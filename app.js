@@ -300,7 +300,7 @@ function spawnSupplyItem() {
     }
     updateGameStats()
     window.setTimeout(() => item.remove(), 330)
-    if (gameOxygen === 0) window.setTimeout(finishSupplyGame, 350)
+    if (gameOxygen === 0 || gameCollected >= GAME_TARGET) window.setTimeout(finishSupplyGame, 350)
   })
   item.addEventListener('animationend', expireItem, { once: true })
   expiryTimer = window.setTimeout(expireItem, reducedMotion ? 1700 : fallTime + 150)
@@ -466,85 +466,98 @@ document.querySelector('#start-mission').addEventListener('click', () => {
 })
 
 const rsvpForm = document.querySelector('#rsvp-form')
-const messageField = rsvpForm.elements.message
-const messageCount = document.querySelector('#message-count')
-const rsvpError = document.querySelector('#rsvp-error')
 const rsvpSuccess = document.querySelector('#rsvp-success')
-const rsvpSuccessTitle = document.querySelector('#rsvp-success-title')
-const rsvpSuccessSummary = document.querySelector('#rsvp-success-summary')
-const rsvpSubmit = rsvpForm.querySelector('[type="submit"]')
-const partySizeField = document.querySelector('#party-size-field')
-const dietaryField = document.querySelector('#dietary-field')
-const storageKey = 'blue-hole-birthday-demo-rsvp'
-let savedRsvp
-try { savedRsvp = JSON.parse(localStorage.getItem(storageKey)) } catch { savedRsvp = undefined }
+const rsvpExternal = document.querySelector('#rsvp-external')
+const rsvpExternalLink = document.querySelector('#rsvp-external-link')
+const rsvpStatus = document.querySelector('.rsvp-phone .app-bar small')
+const publicRsvpUrl = typeof config.rsvpUrl === 'string' ? config.rsvpUrl.trim() : ''
 
-function updateAttendance() {
-  const attending = rsvpForm.elements.attending.value === 'yes'
-  partySizeField.hidden = !attending
-  dietaryField.hidden = !attending
-}
-function fillRsvp(data) {
-  if (!data) return
-  rsvpForm.elements.guestName.value = data.guestName || ''
-  rsvpForm.elements.partySize.value = String(data.partySize || 1)
-  rsvpForm.elements.dietary.value = data.dietary || ''
-  rsvpForm.elements.message.value = data.message || ''
-  const choice = rsvpForm.querySelector(`[name="attending"][value="${data.attending ? 'yes' : 'no'}"]`)
-  if (choice) choice.checked = true
-  messageCount.value = String(rsvpForm.elements.message.value.length)
-  updateAttendance()
-}
-function collectRsvp() {
-  const formData = new FormData(rsvpForm)
-  const guestName = String(formData.get('guestName') || '').trim()
-  const attending = formData.get('attending') === 'yes'
-  if (!guestName) throw new Error('请填写你的姓名。')
-  return {
-    guestName,
-    attending,
-    partySize: attending ? Number(formData.get('partySize')) : 0,
-    dietary: attending ? String(formData.get('dietary') || '').trim() : '',
-    message: String(formData.get('message') || '').trim(),
-  }
-}
-rsvpForm.addEventListener('change', (event) => {
-  if (event.target.name === 'attending') updateAttendance()
-})
-messageField.addEventListener('input', () => { messageCount.value = String(messageField.value.length) })
-rsvpForm.addEventListener('submit', (event) => {
-  event.preventDefault()
-  rsvpError.hidden = true
-  let submission
-  try { submission = collectRsvp() } catch (error) {
-    rsvpError.textContent = error.message
-    rsvpError.hidden = false
-    return
-  }
-  rsvpSubmit.disabled = true
-  rsvpSubmit.querySelector('span').textContent = '正在保存演示登记……'
-  try {
-    savedRsvp = submission
-    localStorage.setItem(storageKey, JSON.stringify(savedRsvp))
-    rsvpForm.hidden = true
-    rsvpSuccess.hidden = false
-    rsvpSuccessTitle.textContent = `${submission.guestName}，登记成功`
-    rsvpSuccessSummary.textContent = submission.attending
-      ? `已在本机保存 ${submission.partySize} 人的演示记录；这些内容不会上传。`
-      : '已在本机保存“遗憾缺席”的演示记录；这些内容不会上传。'
-    rsvpSuccess.focus({ preventScroll: true })
-  } catch {
-    rsvpError.textContent = '当前浏览器无法保存，请检查隐私设置后再试。'
-    rsvpError.hidden = false
-  } finally {
-    rsvpSubmit.disabled = false
-    rsvpSubmit.querySelector('span').textContent = '保存赴约信息'
-  }
-})
-document.querySelector('#rsvp-edit').addEventListener('click', () => {
-  fillRsvp(savedRsvp)
-  rsvpForm.hidden = false
+if (publicRsvpUrl) {
+  rsvpForm.hidden = true
   rsvpSuccess.hidden = true
-})
-updateAttendance()
-fillRsvp(savedRsvp)
+  rsvpExternal.hidden = false
+  rsvpExternalLink.href = publicRsvpUrl
+  rsvpStatus.textContent = 'ONLINE'
+} else if (rsvpForm) {
+  const messageField = rsvpForm.elements.message
+  const messageCount = document.querySelector('#message-count')
+  const rsvpError = document.querySelector('#rsvp-error')
+  const rsvpSuccessTitle = document.querySelector('#rsvp-success-title')
+  const rsvpSuccessSummary = document.querySelector('#rsvp-success-summary')
+  const rsvpSubmit = rsvpForm.querySelector('[type="submit"]')
+  const partySizeField = document.querySelector('#party-size-field')
+  const dietaryField = document.querySelector('#dietary-field')
+  const storageKey = 'blue-hole-birthday-demo-rsvp'
+  let savedRsvp
+  try { savedRsvp = JSON.parse(localStorage.getItem(storageKey)) } catch { savedRsvp = undefined }
+
+  function updateAttendance() {
+    const attending = rsvpForm.elements.attending.value === 'yes'
+    partySizeField.hidden = !attending
+    dietaryField.hidden = !attending
+  }
+  function fillRsvp(data) {
+    if (!data) return
+    rsvpForm.elements.guestName.value = data.guestName || ''
+    rsvpForm.elements.partySize.value = String(data.partySize || 1)
+    rsvpForm.elements.dietary.value = data.dietary || ''
+    rsvpForm.elements.message.value = data.message || ''
+    const choice = rsvpForm.querySelector(`[name="attending"][value="${data.attending ? 'yes' : 'no'}"]`)
+    if (choice) choice.checked = true
+    messageCount.value = String(rsvpForm.elements.message.value.length)
+    updateAttendance()
+  }
+  function collectRsvp() {
+    const formData = new FormData(rsvpForm)
+    const guestName = String(formData.get('guestName') || '').trim()
+    const attending = formData.get('attending') === 'yes'
+    if (!guestName) throw new Error('请填写你的姓名。')
+    return {
+      guestName,
+      attending,
+      partySize: attending ? Number(formData.get('partySize')) : 0,
+      dietary: attending ? String(formData.get('dietary') || '').trim() : '',
+      message: String(formData.get('message') || '').trim(),
+    }
+  }
+  rsvpForm.addEventListener('change', (event) => {
+    if (event.target.name === 'attending') updateAttendance()
+  })
+  messageField.addEventListener('input', () => { messageCount.value = String(messageField.value.length) })
+  rsvpForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    rsvpError.hidden = true
+    let submission
+    try { submission = collectRsvp() } catch (error) {
+      rsvpError.textContent = error.message
+      rsvpError.hidden = false
+      return
+    }
+    rsvpSubmit.disabled = true
+    rsvpSubmit.querySelector('span').textContent = '正在保存演示登记……'
+    try {
+      savedRsvp = submission
+      localStorage.setItem(storageKey, JSON.stringify(savedRsvp))
+      rsvpForm.hidden = true
+      rsvpSuccess.hidden = false
+      rsvpSuccessTitle.textContent = `${submission.guestName}，登记成功`
+      rsvpSuccessSummary.textContent = submission.attending
+        ? `已在本机保存 ${submission.partySize} 人的演示记录；这些内容不会上传。`
+        : '已在本机保存“遗憾缺席”的演示记录；这些内容不会上传。'
+      rsvpSuccess.focus({ preventScroll: true })
+    } catch {
+      rsvpError.textContent = '当前浏览器无法保存，请检查隐私设置后再试。'
+      rsvpError.hidden = false
+    } finally {
+      rsvpSubmit.disabled = false
+      rsvpSubmit.querySelector('span').textContent = '保存赴约信息'
+    }
+  })
+  document.querySelector('#rsvp-edit').addEventListener('click', () => {
+    fillRsvp(savedRsvp)
+    rsvpForm.hidden = false
+    rsvpSuccess.hidden = true
+  })
+  updateAttendance()
+  fillRsvp(savedRsvp)
+}

@@ -53,4 +53,7 @@ window.BIRTHDAY_INVITATION = {
   musicEnabled: true,
   musicUrl: 'https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/81/7c/fc/817cfcb4-e07a-c9ee-21cc-2fe61ff00906/mzaf_12705664676681936623.plus.aac.p.m4a',
   musicHint: '点击播放 / 关闭官方音乐',
+
+  // 9. 真实宾客后台：粘贴第三方表单的公开填写链接；留空则保持本地演示模式
+  rsvpUrl: '',
 }
