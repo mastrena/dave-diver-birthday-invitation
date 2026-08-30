@@ -4,7 +4,9 @@
 
 无需安装框架或运行构建命令，项目只使用 HTML、CSS 和 JavaScript。所有个性化内容都集中在 `config.js` 一个文件里，改完双击 `index.html` 就能预览，不需要碰页面结构和样式。
 
-> 🎂 [立即体验在线 Demo](https://mastrena.github.io/dave-diver-birthday-invitation/)
+> 🎂 [立即体验在线 Demo](https://1db31f6ad70848539e5a0de86a673f2d.app.workbuddy.link/)（国内可直连，打开更快）
+
+> 备用镜像（国外访问更快）：[GitHub Pages 版本](https://mastrena.github.io/dave-diver-birthday-invitation/)
 
 ## 页面包含什么
 
@@ -122,7 +124,7 @@ dave-diver-birthday-invitation/
 https://你的用户名.github.io/仓库名/
 ```
 
-本仓库已按此方式发布在 https://mastrena.github.io/dave-diver-birthday-invitation/ 。
+本仓库的 GitHub Pages 版本在 https://mastrena.github.io/dave-diver-birthday-invitation/ 。国内访问可能较慢或不稳定，发给国内亲友时请优先使用页面顶部那条国内可直连的链接。
 
 ## 做好以后，怎么发给朋友
 
