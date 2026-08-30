@@ -92,6 +92,7 @@ dave-diver-birthday-invitation/
 ├── assets/                 # 场景、角色、分享图（不含音乐文件）
 ├── GUIDE.zh-CN.md          # 零基础定制与部署教程
 ├── AI_SETUP_PROMPT.md      # 交给 AI 自动定制的提示词
+├── AI_PUBLISH_GUIDE.zh-CN.md  # 用 AI 工具一句话生成分享网址
 ├── COPYRIGHT_NOTICE.md     # 版权边界与降低风险建议
 ├── THIRD_PARTY_ASSETS.md   # 第三方素材清单
 ├── .nojekyll               # 让 GitHub Pages 原样发布静态文件
@@ -100,7 +101,15 @@ dave-diver-birthday-invitation/
 
 背景音乐默认引用远程试听地址，音频文件不在仓库内；换成自己的音乐时，把文件放进 `assets/` 并在 `config.js` 里把 `musicUrl` 改成 `./assets/你的文件名.mp3`。
 
-## 发布到 GitHub Pages
+## 发布成网址：两种方式选一种
+
+### 方式一：让 AI 工具帮你发布（不懂技术首选）
+
+不需要注册账号，也不需要理解 Git。把项目文件夹交给 WorkBuddy、豆包桌面版或百度秒哒，说一句「发布上线，生成一个可以分享的网址」，就能拿到 HTTPS 链接。三条路线的详细步骤、可直接复制的提示词和排错清单见：
+
+> 🚀 [用 AI 工具一句话生成分享网址](./AI_PUBLISH_GUIDE.zh-CN.md)
+
+### 方式二：发布到 GitHub Pages（想自己掌控）
 
 1. 点击仓库上方的 **Settings**。
 2. 左侧点击 **Pages**。
@@ -127,6 +136,8 @@ https://你的用户名.github.io/仓库名/
 4. 另外做一张带二维码的邀请图，作为朋友圈和现场指示牌的备用入口。
 
 微信分享卡片说明、二维码制作、可直接复制的邀请文案，以及改完后朋友仍看到旧内容的解决办法，见 [定制教程第八节](./GUIDE.zh-CN.md#八把邀请函分享给亲朋好友)。
+
+网址交给 AI 工具生成的，发布后同样按上面四步检查；AI 生成页面的常见坑见 [AI 发布教程第七节](./AI_PUBLISH_GUIDE.zh-CN.md#七排错速查)。
 
 ## 版权与非官方声明
 
