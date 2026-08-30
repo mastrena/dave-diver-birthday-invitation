@@ -28,6 +28,8 @@
 
 如需真实收集赴约信息，需要另外接入合规的表单或后端，并明确告知访客数据用途。请勿把数据库密码或密钥写在前端文件里。
 
+> 🗂️ 想真正收到名单、在后台查看并导出 Excel？用第三方表单（腾讯问卷 / 金数据）零代码搭建，见 [后台宾客管理接入教程](./RSVP_BACKEND.zh-CN.md)。
+
 ## 三分钟开始
 
 1. 点击 GitHub 页面右上方绿色 **Code** 按钮，选择 **Download ZIP**，下载并解压。
@@ -93,6 +95,7 @@ dave-diver-birthday-invitation/
 ├── app.js                  # 交互逻辑，一般不用改
 ├── assets/                 # 场景、角色、分享图（不含音乐文件）
 ├── GUIDE.zh-CN.md          # 零基础定制与部署教程
+├── RSVP_BACKEND.zh-CN.md   # 用第三方表单接入真实后台宾客管理
 ├── AI_SETUP_PROMPT.md      # 交给 AI 自动定制的提示词
 ├── AI_PUBLISH_GUIDE.zh-CN.md  # 用 AI 工具一句话生成分享网址
 ├── COPYRIGHT_NOTICE.md     # 版权边界与降低风险建议
