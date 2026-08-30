@@ -152,6 +152,17 @@ https://你的用户名.github.io/仓库名/
 - [版权风险说明与降低风险建议](./COPYRIGHT_NOTICE.md)
 - [第三方素材范围](./THIRD_PARTY_ASSETS.md)
 
+## 请作者喝杯咖啡
+
+如果这个项目对你有帮助，欢迎自愿赞赏；不赞赏也完全不影响使用、下载或二次定制。扫码时请自行核对收款信息与金额。
+
+<p>
+  <img src="./assets/sponsor-wechat.jpg" alt="微信赞赏码" width="260" />
+  <img src="./assets/sponsor-alipay.jpg" alt="支付宝赞赏码" width="260" />
+</p>
+
+微信支付 / 支付宝
+
 ## 许可
 
 除明确列出的第三方素材外，本项目原创代码采用 [MIT License](./LICENSE)。
