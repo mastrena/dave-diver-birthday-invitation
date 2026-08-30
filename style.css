@@ -72,7 +72,7 @@ img { display: block; max-width: 100%; }
 .hero-copy { position: absolute; z-index: 2; top: 36%; left: 18px; right: 18px; text-align: center; text-shadow: 0 3px #00365f; }
 .mission-code { display: inline-block; margin: 0; padding: 7px 14px; border: 3px solid #77eee8; color: #fff; background: #153959e8; box-shadow: 4px 5px 0 #0a5070; font: 900 clamp(9px, 2.8vw, 12px)/1 monospace; letter-spacing: .11em; }
 .hero-kicker { margin: 12px 0 4px; color: #fff8cf; font-size: 11px; font-weight: 900; letter-spacing: .28em; }
-.hero h1 { margin: 0; color: var(--yellow); font: 900 clamp(38px, 12vw, 58px)/1 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC", sans-serif; letter-spacing: .05em; -webkit-text-stroke: 1.5px #8a5011; text-shadow: 0 4px #ff992c, 0 8px #052b52; -webkit-font-smoothing: antialiased; }
+.hero h1 { margin: 0; color: var(--yellow); font: 900 clamp(38px, 12vw, 58px)/1 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC", sans-serif; letter-spacing: .08em; text-shadow: 0 3px 0 #c4661a, 0 6px 0 #8a3a0a, 0 10px 14px #001a3588; -webkit-font-smoothing: antialiased; }
 .hero-en { margin: 11px 0 0; color: #fff6b4; font: 900 12px/1 monospace; letter-spacing: .16em; }
 .mission-ticket { display: grid; grid-template-columns: 42px 1fr; gap: 4px 7px; width: min(92%, 340px); margin: 17px auto 0; padding: 10px 12px; border: 2px dashed #bbf8f4; background: #001d38bd; text-align: left; }
 .mission-ticket span { color: #65e6e0; font: 900 8px/1.5 monospace; }
