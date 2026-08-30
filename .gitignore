@@ -1,1 +1,4 @@
 .DS_Store
+
+# WorkBuddy 工作区数据（仅本地使用，不随仓库公开）
+.workbuddy/
