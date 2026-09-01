@@ -30,6 +30,8 @@
 
 > 🗂️ 想真正收到名单、在后台查看并导出 Excel？教程提供 WPS 文档、腾讯文档、飞书和问卷星示例；创建表单后，只需在 `config.js` 粘贴一行公开填写链接。详见 [零基础宾客管理后台教程](./RSVP_BACKEND.zh-CN.md)。
 
+生日版刻意保持为“只改 `config.js`”的轻量模板，因此不内置需要服务器配置的后台页面。若你想要独立密码后台、住宿筛选与 Excel 导出，可参考婚礼版的 [蓝洞宾客管理后台](https://github.com/mastrena/dave-diver-wedding-invitation/blob/main/%E5%90%8E%E5%8F%B0%E9%83%A8%E7%BD%B2%E8%AF%B4%E6%98%8E.md)；生日请柬本身仍推荐优先使用本仓库的 WPS、腾讯文档、飞书或问卷星教程。
+
 ## 三分钟开始
 
 1. 点击 GitHub 页面右上方绿色 **Code** 按钮，选择 **Download ZIP**，下载并解压。
